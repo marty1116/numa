@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+
+\begin{document}
+
+\section*{Problem Setup}
+
+Let \(g \in C^n[a, b]\), and consider \(n+1\) distinct points \(x_0, x_1, \ldots, x_n \in [a, b]\) such that 
+\[
+x_0 < x_1 < \cdots < x_n.
+\]
+Assume further that
+\[
+g(x_0) = g(x_1) = \cdots = g(x_n) = 0.
+\]
+We aim to prove that there exists a point \(\xi \in [x_0, x_n]\) such that \(g^{(n)}(\xi) = 0\).
+
+\subsection*{Auxiliary Function}
+
+Define the polynomial
+\[
+h(x) = \prod_{i=0}^n (x - x_i),
+\]
+which is of degree \(n+1\) and satisfies \(h(x_i) = 0\) for all \(i = 0, 1, \ldots, n\). \\Next, define the quotient function
+\[
+f(x) = \frac{g(x)}{h(x)}.
+\]
+
+\subsection*{Step 1: First Application}
+Since \(g(x_0) = g(x_1) = 0\), by Rolle’s Theorem there exists a point \(c_1 \in (x_0, x_1)\) such that 
+\[
+g'(c_1) = 0.
+\]
+Similarly, \(g(x_1) = g(x_2) = 0\) implies there exists a point \(c_2 \in (x_1, x_2)\) such that 
+\[
+g'(c_2) = 0.
+\]
+Continuing this, we find that \(g'(x)\) has zeros in \((x_0, x_1), (x_1, x_2), \ldots, (x_{n-1}, x_n)\).
+
+\subsection*{Step 2: Second Application}
+For each interval where \(g'(x)\) has a zero, apply Rolle’s Theorem again to \(g'(x)\). For example, in \((x_0, x_1)\), there exists a point \(d_1 \in (c_1, c_2)\) such that
+\[
+g''(d_1) = 0.
+\]
+Similarly, zeros of \(g''(x)\) can be found in \((c_2, c_3), (c_3, c_4), \ldots, (c_{n-1}, c_n)\).
+
+\subsection*{Step 3: Repeated Applications}
+By iteratively applying Rolle’s Theorem, we find that:
+\begin{itemize}
+    \item \(g'(x)\) has zeros in \((x_0, x_1), \ldots, (x_{n-1}, x_n)\),
+    \item \(g''(x)\) has zeros in the intervals formed by zeros of \(g'(x)\),
+    \item This process continues until the \(n\)-th derivative.\\
+\end{itemize}
+\\
+After \(n\) applications of Rolle’s Theorem, there exists a point \(\xi \in [x_0, x_n]\) such that 
+\[
+g^{(n)}(\xi) = 0.
+\]
+
+\end{document}
